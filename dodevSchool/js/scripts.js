@@ -13,8 +13,13 @@ let arrayAlunos = []
 
 function CadastrarAluno(nome,idade,nota, listaAlunos) {
   let aluno = new Aluno(nome, idade, nota)
-  if(listaAlunos.includes(aluno)){
-    alert("Aluno já cadastrado!!")
+  let incluso = false
+  listaAlunos.forEach(aluno => {
+    if(aluno.Nome === nome && aluno.Idade === idade && aluno.Nota === nota){
+      incluso = true
+    }
+  })
+  if(incluso){
     return aluno
   }else{
     listaAlunos.push(aluno)
