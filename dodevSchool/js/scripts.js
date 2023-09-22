@@ -1,39 +1,57 @@
-////////////////////////////////////////////////////////////////////////
-////////////////// FAÇA O SEU CÓDIGO AQUI \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-////////////////////////////////////////////////////////////////////////
-
 class Aluno {
-  
+  Nome
+  Idade
+  Nota
+  constructor(nome,idade,nota){
+    this.Nome = nome
+    this.Idade = idade
+    this.Nota = nota
+  }
 }
 
-// Array
+let arrayAlunos = []
 
-
-//funções projeto
-
-function CadastrarAluno() {
-  
+function CadastrarAluno(nome,idade,nota, listaAlunos) {
+  let aluno = new Aluno(nome, idade, nota)
+  if(listaAlunos.includes(aluno)){
+    alert("Aluno já cadastrado!!")
+    return aluno
+  }else{
+    listaAlunos.push(aluno)
+    return aluno
+  }
 }
 
-function OrdenarPorNota() {
- 
+function OrdenarPorNota(alunosCadastrados) {
+  alunosCadastrados.sort(function(a,b){
+    return a.Nota < b.Nota ? -1 : a.Nota > b.Nota ? 1:0
+  })
+  return alunosCadastrados
 }
 
-function OrdenarPorIdade() {
-
+function OrdenarPorIdade(alunosCadastrados) {
+  alunosCadastrados.sort(function(a,b){
+    return a.Idade < b.Idade ? -1 : a.Idade > b.Idade ? 1:0
+  })
+  return alunosCadastrados
 }
 
-function OrdenarPorNome() {
-
+function OrdenarPorNome(alunosCadastrados) {
+  alunosCadastrados.sort(function(a,b){
+    const nomeA = a.Nome.toUpperCase();
+    const nomeB = b.Nome.toUpperCase();
+    return nomeA < nomeB ? -1 : nomeA > nomeB ? 1:0
+  })
+  return alunosCadastrados
 }
 
-function CalcularMedia(){
-
+function CalcularMedia(alunosCadastrados){
+  let soma = 0
+  alunosCadastrados.forEach(aluno => {
+    soma += Number(aluno.Nota)
+  })
+  return (soma/alunosCadastrados.length)
 }
-
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
 
 function ExcluirAluno(array, nome) {
   let index
